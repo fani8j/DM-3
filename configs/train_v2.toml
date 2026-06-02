@@ -1,0 +1,60 @@
+# configs/train_v2.toml — improved training: more epochs, larger model
+seed = 42
+reproducibility_mode = true
+device = "cuda"
+
+[paths]
+train_dir = "train/train"
+test_dir = "test/test"
+sample_submission = "sample_submission.csv"
+experiments_dir = "experiments"
+checkpoints_dir = "checkpoints"
+submissions_dir = "submissions"
+
+[preprocess]
+nan_inf_to_zero = true
+standardize = true
+per_window_demean = false
+
+[features]
+magnitude = true
+std_magnitude = true
+first_difference = true
+rolling_stats = true
+rolling_window = 10
+frequency_domain = true
+freq_mode = "static"
+[features.stretch]
+gravity = false
+gravity_cutoff_hz = 0.3
+wrist_prior = false
+wrist_prior_vector = []
+
+[model]
+arch = "tcn"
+hidden_dim = 256
+depth = 8
+kernel_size = 7
+dropout = 0.3
+nhead = 4
+
+[train]
+batch_size = 64
+epochs = 100
+optimizer = "adamw"
+lr = 1e-3
+weight_decay = 1e-4
+lr_schedule = "cosine"
+class_weighted_loss = true
+
+[validation]
+strategies = ["random_split"]
+[validation.group_kfold]
+n_splits = 5
+[validation.random_split]
+train_fraction = 0.8
+seed = 42
+
+[predict]
+ensemble_checkpoints = []
+ensemble_weights = []

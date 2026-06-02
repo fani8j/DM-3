@@ -1,0 +1,55 @@
+# Python / environment
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.env
+.env.*
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Local IDE / agent state
+.agents/
+.codex/
+.kiro/
+.vscode/
+.idea/
+/github_repo/
+
+# Kaggle dataset files are downloaded locally with kagglehub.
+/train/
+/test/
+/sample_submission.csv
+
+# Model outputs and experiment artifacts
+/feature_cache/
+/checkpoints/
+/experiments/
+/catboost_info/
+/submissions/
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+*.pkl
+
+# Logs and generated tables
+*.log
+*.tsv
+*.jsonl
+
+# Report drafts and generated report assets are submitted separately.
+/REPORT_DRAFT.md
+/REPORT_SECTION_REVIEW.md
+/report_asg3_draft.*
+/DM_asg3_*.pdf
+/report_figures/
+/DM_114_Assignment 3.pptx.pdf
+
+# OS files
+.DS_Store
+Thumbs.db

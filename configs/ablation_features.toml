@@ -1,0 +1,16 @@
+# Ablation: feature engineering variations
+# Inherits from default.toml; override feature flags here.
+
+[features]
+magnitude = true
+std_magnitude = false
+first_difference = false
+rolling_stats = false
+rolling_window = 5
+frequency_domain = false
+freq_mode = "static"
+[features.stretch]
+gravity = false
+gravity_cutoff_hz = 0.3
+wrist_prior = false
+wrist_prior_vector = []

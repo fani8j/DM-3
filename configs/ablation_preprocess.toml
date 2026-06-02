@@ -1,0 +1,7 @@
+# Ablation: preprocessing variations
+# Inherits from default.toml; override preprocess flags here.
+
+[preprocess]
+nan_inf_to_zero = true
+standardize = false
+per_window_demean = false

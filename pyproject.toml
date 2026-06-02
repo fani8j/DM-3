@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/har"]
+
+[project]
+name = "har"
+version = "0.1.0"
+description = "Human Activity Recognition pipeline for NYCU Data Mining Assignment 3"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "torch>=2.2.0,<3.0.0",
+    "numpy>=1.26.0,<2.0.0",
+    "pandas>=2.1.0,<3.0.0",
+    "scipy>=1.11.0,<2.0.0",
+    "scikit-learn>=1.3.0,<2.0.0",
+    "pydantic>=2.5.0,<3.0.0",
+    "tomli>=2.0.0,<3.0.0;python_version<'3.11'",
+    "lightgbm>=4.6.0",
+    "xgboost>=3.2.0",
+    "catboost>=1.2.10",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0,<9.0.0",
+    "pytest-cov>=4.1.0,<6.0.0",
+    "hypothesis>=6.90.0,<7.0.0",
+]
+
+[project.scripts]
+har-validate-data = "har.cli.validate_data:main"
+har-train = "har.cli.train:main"
+har-predict = "har.cli.predict:main"
+har-aggregate = "har.cli.aggregate:main"
+har-run = "har.cli.run_e2e:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:launch_testing -p no:launch_testing_ros -p no:ament_copyright -p no:ament_xmllint -p no:ament_lint -p no:ament_pep257 -p no:ament_flake8"
