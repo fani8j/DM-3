@@ -168,7 +168,7 @@ def main() -> None:
             "blend_weights": blend_weights,
             "class_weights": class_weights,
         },
-        # 0.8274 public LB. Keeps class 1/2 counts closer to the old
+        # Reported 0.8274 public LB. Keeps class 1/2 counts closer to the old
         # submission_final.csv while retaining most of the OOF gain.
         "public_safe": {
             "out": Path("submissions/submission_cached_blend_public_safe.csv"),
@@ -176,7 +176,7 @@ def main() -> None:
             "class_weights": np.array([1.137, 1.4, 2.25, 1.0, 0.579, 1.0]),
         },
         # Small leaderboard probes around public_safe. These change only a few
-        # dozen test labels from the current rank-1 file.
+        # dozen test labels from the best reported public file.
         "probe_c4_up": {
             "out": Path("submissions/submission_lb_probe_c4_up.csv"),
             "blend_weights": blend_weights,
